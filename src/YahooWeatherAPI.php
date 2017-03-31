@@ -101,7 +101,7 @@ class YahooWeatherAPI implements YahooWeatherAPIInterface
             );
             $response = $this->client->request('GET', $this->yql, $headers);
             $response = json_decode($response->getBody(), true);
-            if (!isset($response['query']['results']['channel']['item']['condition'])) {
+            if (!isset($response['query']['results']['channel'])) {
                 $this->lastResponse = false;
             } else {
                 $this->lastResponse = $response['query']['results']['channel'];
